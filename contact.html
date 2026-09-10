@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="si"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>සම්බන්ධ වන්න | KDJ Kudu</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- FontAwesome Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<!-- Google Fonts: Noto Sans Sinhala & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;family=Noto+Sans+Sinhala:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- JSZip and FileSaver for ZIP Export feature -->
+
+
+<script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        spice: {
+                            red: '#9A2A18',
+                            darkred: '#7A1C0E',
+                            gold: '#D97706',
+                            lightgold: '#FBBF24',
+                            cinnamon: '#78350F',
+                            green: '#15803D',
+                            parchment: '#FCFBF7',
+                            cardbg: '#FFFDF9',
+                            dark: '#1C1917'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans Sinhala', 'sans-serif'],
+                        sinhala: ['Noto Sans Sinhala', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', 'Noto Sans Sinhala', sans-serif;
+            background-color: #FCFBF7;
+            color: #1C1917;
+        }
+        .spice-gradient {
+            background: linear-gradient(135deg, #78350F 0%, #9A2A18 50%, #D97706 100%);
+        }
+        .spice-hero-overlay {
+            background: linear-gradient(to right, rgba(28, 25, 23, 0.88), rgba(120, 53, 15, 0.75), rgba(154, 42, 24, 0.4));
+        }
+        .glass-card {
+            background: rgba(255, 253, 249, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(217, 119, 6, 0.15);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FCFBF7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D97706;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9A2A18;
+        }
+        .badge-pulse {
+            animation: pulse-border 2s infinite;
+        }
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0.5); }
+            70% { box-shadow: 0 0 0 10px rgba(217, 119, 6, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(217, 119, 6, 0); }
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, Noto Sans Sinhala, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.-right-2{right:-0.5rem}.-top-2{top:-0.5rem}.left-3\.5{left:0.875rem}.top-0{top:0px}.top-1\/2{top:50%}.left-3{left:0.75rem}.right-3{right:0.75rem}.top-3{top:0.75rem}.z-10{z-index:10}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-8{margin-top:2rem;margin-bottom:2rem}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:0.25rem}.mt-10{margin-top:2.5rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mb-1{margin-bottom:0.25rem}.mb-6{margin-bottom:1.5rem}.mr-1{margin-right:0.25rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-0\.5{margin-top:0.125rem}.line-clamp-2{overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-12{height:3rem}.h-5{height:1.25rem}.h-full{height:100%}.h-10{height:2.5rem}.h-48{height:12rem}.h-56{height:14rem}.h-72{height:18rem}.h-8{height:2rem}.h-9{height:2.25rem}.min-h-\[500px\]{min-height:500px}.min-h-screen{min-height:100vh}.w-12{width:3rem}.w-16{width:4rem}.w-5{width:1.25rem}.w-full{width:100%}.w-10{width:2.5rem}.w-8{width:2rem}.w-9{width:2.25rem}.min-w-\[60px\]{min-width:60px}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-xl{max-width:36rem}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.flex-grow{flex-grow:1}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-105{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-12 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(3rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(3rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.scroll-smooth{scroll-behavior:smooth}.whitespace-nowrap{white-space:nowrap}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.rounded-3xl{border-radius:1.5rem}.border{border-width:1px}.border-0{border-width:0px}.border-2{border-width:2px}.border-y{border-top-width:1px;border-bottom-width:1px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-t{border-top-width:1px}.border-amber-400\/30{border-color:rgb(251 191 36 / 0.3)}.border-amber-500\/30{border-color:rgb(245 158 11 / 0.3)}.border-spice-cinnamon\/20{border-color:rgb(120 53 15 / 0.2)}.border-spice-gold\/10{border-color:rgb(217 119 6 / 0.1)}.border-spice-gold\/20{border-color:rgb(217 119 6 / 0.2)}.border-spice-gold\/30{border-color:rgb(217 119 6 / 0.3)}.border-spice-gold\/40{border-color:rgb(217 119 6 / 0.4)}.border-spice-red{--tw-border-opacity:1;border-color:rgb(154 42 24 / var(--tw-border-opacity, 1))}.border-stone-200{--tw-border-opacity:1;border-color:rgb(231 229 228 / var(--tw-border-opacity, 1))}.border-stone-200\/60{border-color:rgb(231 229 228 / 0.6)}.border-stone-300{--tw-border-opacity:1;border-color:rgb(214 211 209 / var(--tw-border-opacity, 1))}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-amber-200\/60{border-color:rgb(253 230 138 / 0.6)}.border-stone-800{--tw-border-opacity:1;border-color:rgb(41 37 36 / var(--tw-border-opacity, 1))}.bg-amber-100{--tw-bg-opacity:1;background-color:rgb(254 243 199 / var(--tw-bg-opacity, 1))}.bg-amber-500\/20{background-color:rgb(245 158 11 / 0.2)}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229 / var(--tw-bg-opacity, 1))}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-red-100{--tw-bg-opacity:1;background-color:rgb(254 226 226 / var(--tw-bg-opacity, 1))}.bg-spice-cardbg{--tw-bg-opacity:1;background-color:rgb(255 253 249 / var(--tw-bg-opacity, 1))}.bg-spice-cinnamon{--tw-bg-opacity:1;background-color:rgb(120 53 15 / var(--tw-bg-opacity, 1))}.bg-spice-cinnamon\/10{background-color:rgb(120 53 15 / 0.1)}.bg-spice-cinnamon\/5{background-color:rgb(120 53 15 / 0.05)}.bg-spice-gold{--tw-bg-opacity:1;background-color:rgb(217 119 6 / var(--tw-bg-opacity, 1))}.bg-spice-gold\/20{background-color:rgb(217 119 6 / 0.2)}.bg-spice-parchment{--tw-bg-opacity:1;background-color:rgb(252 251 247 / var(--tw-bg-opacity, 1))}.bg-spice-parchment\/95{background-color:rgb(252 251 247 / 0.95)}.bg-spice-red{--tw-bg-opacity:1;background-color:rgb(154 42 24 / var(--tw-bg-opacity, 1))}.bg-stone-100{--tw-bg-opacity:1;background-color:rgb(245 245 244 / var(--tw-bg-opacity, 1))}.bg-stone-50{--tw-bg-opacity:1;background-color:rgb(250 250 249 / var(--tw-bg-opacity, 1))}.bg-stone-800\/80{background-color:rgb(41 37 36 / 0.8)}.bg-stone-900{--tw-bg-opacity:1;background-color:rgb(28 25 23 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-black\/40{background-color:rgb(0 0 0 / 0.4)}.bg-black\/60{background-color:rgb(0 0 0 / 0.6)}.bg-black\/70{background-color:rgb(0 0 0 / 0.7)}.bg-stone-200{--tw-bg-opacity:1;background-color:rgb(231 229 228 / var(--tw-bg-opacity, 1))}.bg-stone-800{--tw-bg-opacity:1;background-color:rgb(41 37 36 / var(--tw-bg-opacity, 1))}.bg-spice-red\/10{background-color:rgb(154 42 24 / 0.1)}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-amber-400{--tw-gradient-from:#fbbf24 var(--tw-gradient-from-position);--tw-gradient-to:rgb(251 191 36 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-spice-cinnamon{--tw-gradient-from:#78350F var(--tw-gradient-from-position);--tw-gradient-to:rgb(120 53 15 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-spice-gold{--tw-gradient-from:#D97706 var(--tw-gradient-from-position);--tw-gradient-to:rgb(217 119 6 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-stone-900{--tw-gradient-from:#1c1917 var(--tw-gradient-from-position);--tw-gradient-to:rgb(28 25 23 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-orange-400{--tw-gradient-to:rgb(251 146 60 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #fb923c var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-spice-cinnamon{--tw-gradient-to:rgb(120 53 15 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #78350F var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-spice-red{--tw-gradient-to:rgb(154 42 24 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #9A2A18 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-red-400{--tw-gradient-to:#f87171 var(--tw-gradient-to-position)}.to-spice-gold{--tw-gradient-to:#D97706 var(--tw-gradient-to-position)}.to-spice-red{--tw-gradient-to:#9A2A18 var(--tw-gradient-to-position)}.to-stone-900{--tw-gradient-to:#1c1917 var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.fill-spice-red{fill:#9A2A18}.object-cover{object-fit:cover}.object-center{object-position:center}.p-0\.5{padding:0.125rem}.p-1\.5{padding:0.375rem}.p-2{padding:0.5rem}.p-2\.5{padding:0.625rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-1{padding:0.25rem}.p-3{padding:0.75rem}.p-5{padding:1.25rem}.p-8{padding:2rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.px-7{padding-left:1.75rem;padding-right:1.75rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-8{padding-top:2rem;padding-bottom:2rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.pb-1{padding-bottom:0.25rem}.pb-2{padding-bottom:0.5rem}.pl-10{padding-left:2.5rem}.pr-4{padding-right:1rem}.pt-2{padding-top:0.5rem}.pt-6{padding-top:1.5rem}.pb-4{padding-bottom:1rem}.pt-4{padding-top:1rem}.pt-0{padding-top:0px}.text-center{text-align:center}.text-right{text-align:right}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-light{font-weight:300}.font-medium{font-weight:500}.font-semibold{font-weight:600}.font-normal{font-weight:400}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.leading-snug{line-height:1.375}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-amber-200{--tw-text-opacity:1;color:rgb(253 230 138 / var(--tw-text-opacity, 1))}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77 / var(--tw-text-opacity, 1))}.text-amber-400{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9 / var(--tw-text-opacity, 1))}.text-blue-400{--tw-text-opacity:1;color:rgb(96 165 250 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105 / var(--tw-text-opacity, 1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87 / var(--tw-text-opacity, 1))}.text-red-700{--tw-text-opacity:1;color:rgb(185 28 28 / var(--tw-text-opacity, 1))}.text-rose-400{--tw-text-opacity:1;color:rgb(251 113 133 / var(--tw-text-opacity, 1))}.text-spice-cinnamon{--tw-text-opacity:1;color:rgb(120 53 15 / var(--tw-text-opacity, 1))}.text-spice-dark{--tw-text-opacity:1;color:rgb(28 25 23 / var(--tw-text-opacity, 1))}.text-spice-gold{--tw-text-opacity:1;color:rgb(217 119 6 / var(--tw-text-opacity, 1))}.text-spice-lightgold{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.text-spice-red{--tw-text-opacity:1;color:rgb(154 42 24 / var(--tw-text-opacity, 1))}.text-stone-200{--tw-text-opacity:1;color:rgb(231 229 228 / var(--tw-text-opacity, 1))}.text-stone-300{--tw-text-opacity:1;color:rgb(214 211 209 / var(--tw-text-opacity, 1))}.text-stone-400{--tw-text-opacity:1;color:rgb(168 162 158 / var(--tw-text-opacity, 1))}.text-stone-500{--tw-text-opacity:1;color:rgb(120 113 108 / var(--tw-text-opacity, 1))}.text-stone-600{--tw-text-opacity:1;color:rgb(87 83 78 / var(--tw-text-opacity, 1))}.text-stone-700{--tw-text-opacity:1;color:rgb(68 64 60 / var(--tw-text-opacity, 1))}.text-stone-800{--tw-text-opacity:1;color:rgb(41 37 36 / var(--tw-text-opacity, 1))}.text-stone-900{--tw-text-opacity:1;color:rgb(28 25 23 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-spice-green{--tw-text-opacity:1;color:rgb(21 128 61 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.underline-offset-4{text-underline-offset:4px}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.accent-spice-red{accent-color:#9A2A18}.opacity-40{opacity:0.4}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-1000{transition-duration:1000ms}.duration-500{transition-duration:500ms}.hover\:-translate-y-0\.5:hover{--tw-translate-y:-0.125rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:-translate-y-1:hover{--tw-translate-y:-0.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-emerald-700:hover{--tw-bg-opacity:1;background-color:rgb(4 120 87 / var(--tw-bg-opacity, 1))}.hover\:bg-spice-cinnamon\/20:hover{background-color:rgb(120 53 15 / 0.2)}.hover\:bg-spice-lightgold:hover{--tw-bg-opacity:1;background-color:rgb(251 191 36 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-200:hover{--tw-bg-opacity:1;background-color:rgb(231 229 228 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-800:hover{--tw-bg-opacity:1;background-color:rgb(41 37 36 / var(--tw-bg-opacity, 1))}.hover\:bg-black\/70:hover{background-color:rgb(0 0 0 / 0.7)}.hover\:bg-emerald-600:hover{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.hover\:bg-spice-dark:hover{--tw-bg-opacity:1;background-color:rgb(28 25 23 / var(--tw-bg-opacity, 1))}.hover\:bg-spice-gold:hover{--tw-bg-opacity:1;background-color:rgb(217 119 6 / var(--tw-bg-opacity, 1))}.hover\:bg-spice-red:hover{--tw-bg-opacity:1;background-color:rgb(154 42 24 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-100:hover{--tw-bg-opacity:1;background-color:rgb(245 245 244 / var(--tw-bg-opacity, 1))}.hover\:from-spice-red:hover{--tw-gradient-from:#9A2A18 var(--tw-gradient-from-position);--tw-gradient-to:rgb(154 42 24 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:to-spice-gold:hover{--tw-gradient-to:#D97706 var(--tw-gradient-to-position)}.hover\:text-spice-darkred:hover{--tw-text-opacity:1;color:rgb(122 28 14 / var(--tw-text-opacity, 1))}.hover\:text-spice-lightgold:hover{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.hover\:text-spice-red:hover{--tw-text-opacity:1;color:rgb(154 42 24 / var(--tw-text-opacity, 1))}.hover\:text-amber-400:hover{--tw-text-opacity:1;color:rgb(251 191 36 / var(--tw-text-opacity, 1))}.hover\:text-stone-700:hover{--tw-text-opacity:1;color:rgb(68 64 60 / var(--tw-text-opacity, 1))}.hover\:text-stone-900:hover{--tw-text-opacity:1;color:rgb(28 25 23 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:underline:hover{-webkit-text-decoration-line:underline;text-decoration-line:underline}.hover\:shadow-2xl:hover{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.hover\:shadow-xl:hover{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:border-spice-gold:focus{--tw-border-opacity:1;border-color:rgb(217 119 6 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:scale-105{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:scale-110{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:text-spice-red{--tw-text-opacity:1;color:rgb(154 42 24 / var(--tw-text-opacity, 1))}@media (min-width: 640px){.sm\:inline{display:inline}.sm\:flex{display:flex}.sm\:h-auto{height:auto}.sm\:w-1\/2{width:50%}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:gap-3{gap:0.75rem}.sm\:p-6{padding:1.5rem}.sm\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}.sm\:text-xs{font-size:0.75rem;line-height:1rem}}@media (min-width: 768px){.md\:inline{display:inline}.md\:flex{display:flex}.md\:w-80{width:20rem}.md\:w-auto{width:auto}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:py-20{padding-top:5rem;padding-bottom:5rem}.md\:pb-0{padding-bottom:0px}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}}@media (min-width: 1024px){.lg\:col-span-7{grid-column:span 7 / span 7}.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:flex{display:flex}.lg\:hidden{display:none}.lg\:min-h-\[580px\]{min-height:580px}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.lg\:text-6xl{font-size:3.75rem;line-height:1}}</style></head>
+<body class="min-h-screen flex flex-col justify-between antialiased">
+<!-- TOP ANNOUNCEMENT BAR -->
+<div class="bg-spice-red text-white text-xs sm:text-sm py-2 px-4 text-center font-medium flex items-center justify-between shadow-sm">
+<div class="container mx-auto flex items-center justify-between">
+<span class="flex items-center gap-2">
+<i class="fa-solid fa-truck-fast text-spice-lightgold">
+</i> 🇱🇰 දිවයින පුරා බෙදාහැරීම | Island-wide Courier Delivery
+            </span>
+<div class="hidden md:flex items-center gap-6">
+<a class="hover:text-spice-lightgold transition flex items-center gap-1" href="tel:+94771234567">
+<i class="fa-solid fa-phone"></i> +94 77 123 4567
+                </a>
+<span class="text-spice-lightgold">|</span>
+<span class="flex items-center gap-1"><i class="fa-solid fa-location-dot"></i> ගම්පහ නගරය (Gampaha Town)</span>
+</div>
+<a class="bg-spice-gold hover:bg-spice-lightgold text-spice-dark font-bold px-3 py-0.5 rounded text-xs flex items-center gap-1 shadow transition" href="IMAGE-GUIDE.html">📷 Image Guide</a>
+</div>
+</div>
+<!-- HEADER / NAVIGATION BAR -->
+<header class="sticky top-0 z-40 bg-spice-parchment/95 backdrop-blur-md border-b border-spice-gold/20 shadow-sm">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<!-- LOGO AREA WITH SVG BRAND ICON -->
+<a class="flex items-center gap-3 group" href="index.html">
+<div class="w-12 h-12 rounded-full bg-gradient-to-br from-spice-cinnamon via-spice-red to-spice-gold p-0.5 flex items-center justify-center shadow-md group-hover:scale-105 transition transform">
+<div class="w-full h-full bg-spice-parchment rounded-full flex items-center justify-center p-1.5">
+<!-- Custom Sri Lankan Mortar & Spice SVG -->
+<svg class="w-full h-full fill-spice-red" viewbox="0 0 64 64">
+<path d="M12 40c0 11 8.9 20 20 20s20-9 20-20H12z" fill="#9A2A18"></path>
+<path d="M8 32h48v6H8z" fill="#78350F"></path>
+<path d="M42 10l-16 22h8l16-22z" fill="#D97706"></path>
+<circle cx="32" cy="18" fill="#15803D" r="4"></circle>
+</svg>
+</div>
+</div>
+<div>
+<span class="text-xl sm:text-2xl font-extrabold tracking-tight text-spice-cinnamon block leading-none">KDJ <span class="text-spice-red">Kudu</span></span>
+<span class="text-[10px] sm:text-xs font-semibold text-spice-gold tracking-wider uppercase block">දේශීය කුළුබඩු • ගම්පහ</span>
+</div>
+</a>
+<!-- DESKTOP NAV LINKS -->
+<nav class="hidden lg:flex items-center gap-8 font-semibold text-sm text-stone-700">
+<a class="nav-link pb-1" href="index.html" id="nav-home">මුල් පිටුව (Home)</a>
+<a class="nav-link hover:text-spice-red transition pb-1" href="products.html" id="nav-products">නිෂ්පාදන (Products)</a>
+<a class="nav-link hover:text-spice-red transition pb-1" href="wholesale.html" id="nav-wholesale">තොග ඇණවුම් (Wholesale)</a>
+<a class="nav-link hover:text-spice-red transition pb-1" href="about.html" id="nav-about">අප ගැන (About Us)</a>
+<a class="nav-link hover:text-spice-red transition pb-1 text-spice-red border-b-2 border-spice-red" href="contact.html" id="nav-contact">සම්බන්ධ වන්න (Contact)</a>
+</nav>
+<!-- ACTION BUTTONS -->
+<div class="flex items-center gap-2 sm:gap-3">
+<a class="hidden sm:flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold shadow transition transform active:scale-95" href="https://wa.me/94771234567?text=Hello%20KDJ%20Kudu!%20I%20have%20an%20inquiry." target="_blank">
+<i class="fa-brands fa-whatsapp text-base"></i>
+<span>WhatsApp</span>
+</a>
+<button class="relative bg-spice-cinnamon/10 hover:bg-spice-cinnamon/20 text-spice-cinnamon p-2.5 rounded-xl border border-spice-cinnamon/20 transition flex items-center gap-2" onclick="openCartModal()">
+<i class="fa-solid fa-cart-shopping text-base"></i>
+<span class="hidden md:inline text-xs font-bold">ඇණවුම</span>
+<span class="absolute -top-2 -right-2 bg-spice-red text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow" id="cart-count-badge">0</span>
+</button>
+<!-- MOBILE MENU TOGGLE -->
+<button class="lg:hidden text-stone-800 p-2 text-xl" onclick="toggleMobileMenu()">
+<i class="fa-solid fa-bars" id="menu-icon"></i>
+</button>
+</div>
+</div>
+<!-- MOBILE DROPDOWN MENU -->
+<div class="hidden lg:hidden bg-spice-parchment border-t border-spice-gold/20 px-4 py-4 space-y-3 font-semibold text-stone-800 shadow-lg" id="mobile-menu">
+<a class="block py-2 border-b border-stone-200" href="index.html">මුල් පිටුව (Home)</a>
+<a class="block py-2 border-b border-stone-200" href="products.html">නිෂ්පාදන (Products)</a>
+<a class="block py-2 border-b border-stone-200" href="wholesale.html">තොග ඇණවුම් (Wholesale)</a>
+<a class="block py-2 border-b border-stone-200" href="about.html">අප ගැන (About Us)</a>
+<a class="block py-2" href="contact.html">සම්බන්ධ වන්න (Contact)</a>
+<div class="pt-2 flex gap-2">
+<a class="flex-1 bg-spice-cinnamon text-white py-2.5 rounded-lg text-center text-xs font-bold flex items-center justify-center gap-2" href="tel:+94771234567">
+<i class="fa-solid fa-phone"></i> ඇමතුමක් ගන්න
+                </a>
+<a class="flex-1 bg-emerald-600 text-white py-2.5 rounded-lg text-center text-xs font-bold flex items-center justify-center gap-2" href="https://wa.me/94771234567" target="_blank">
+<i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp
+                </a>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<!-- PAGE 1: HOME PAGE -->
+
+<!-- PAGE 2: PRODUCTS CATALOG PAGE -->
+
+<!-- PAGE 3: WHOLESALE PAGE -->
+
+<!-- PAGE 4: ABOUT US PAGE -->
+
+<!-- PAGE 5: CONTACT PAGE -->
+<section class="page-section" id="page-contact">
+<div class="bg-spice-cinnamon text-white py-10 px-4">
+<div class="container mx-auto text-center max-w-2xl">
+<h1 class="text-3xl sm:text-4xl font-extrabold mb-2">සම්බන්ධ වන්න (Contact Us)</h1>
+<p class="text-amber-200 text-sm">ඕනෑම ඇණවුමක් හෝ විමසීමක් සඳහා අප හා සම්බන්ධ වන්න.</p>
+</div>
+</div>
+<div class="container mx-auto px-4 py-12 max-w-5xl">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- CONTACT INFO DETAILS -->
+<div class="space-y-6">
+<div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-4">
+<h2 class="text-xl font-bold text-spice-cinnamon border-b pb-2">විස්තර සහ ස්ථානය</h2>
+<div class="flex items-start gap-3 text-stone-700 text-sm">
+<div class="w-10 h-10 rounded-lg bg-red-100 text-spice-red flex items-center justify-center text-base shrink-0">
+<i class="fa-solid fa-location-dot"></i>
+</div>
+<div>
+<strong class="block text-stone-900">ලිපිනය (Address):</strong>
+<span>KDJ Kudu, ප්‍රධාන පාර, ගම්පහ නගරය, ශ්‍රී ලංකාව. (Gampaha Town, Sri Lanka)</span>
+</div>
+</div>
+<div class="flex items-start gap-3 text-stone-700 text-sm">
+<div class="w-10 h-10 rounded-lg bg-amber-100 text-spice-gold flex items-center justify-center text-base shrink-0">
+<i class="fa-solid fa-phone"></i>
+</div>
+<div>
+<strong class="block text-stone-900">දුරකථන අංක (Hotline / Voice):</strong>
+<a class="hover:text-spice-red" href="tel:+94771234567">+94 77 123 4567</a> / <a class="hover:text-spice-red" href="tel:+94332211445">+94 33 221 1445</a>
+</div>
+</div>
+<div class="flex items-start gap-3 text-stone-700 text-sm">
+<div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-base shrink-0">
+<i class="fa-brands fa-whatsapp"></i>
+</div>
+<div>
+<strong class="block text-stone-900">WhatsApp ඇණවුම් අංකය:</strong>
+<a class="text-emerald-600 font-bold hover:underline" href="https://wa.me/94771234567" target="_blank">+94 77 123 4567</a>
+</div>
+</div>
+<div class="flex items-start gap-3 text-stone-700 text-sm">
+<div class="w-10 h-10 rounded-lg bg-stone-100 text-stone-700 flex items-center justify-center text-base shrink-0">
+<i class="fa-solid fa-clock"></i>
+</div>
+<div>
+<strong class="block text-stone-900">වැඩකරන වේලාවන් (Opening Hours):</strong>
+<span>සඳුදා - සෙනසුරාදා: පෙ.ව 8.00 - ප.ව 6.00 <br/>(ඉරිදා දිනවල වසා ඇත)</span>
+</div>
+</div>
+</div>
+<!-- MAP PLACEHOLDER CARD -->
+<div class="bg-stone-200 rounded-2xl h-48 flex items-center justify-center border border-stone-300 relative overflow-hidden">
+<iframe allowfullscreen="" class="w-full h-full border-0" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.988081198424!2d79.99120897587841!3d7.092589016584288!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fb988229b13b%3A0x899015eb497047!2sGampaha!5e0!3m2!1sen!2slk!4v1700000000000!502"></iframe>
+</div>
+</div>
+<!-- DIRECT INQUIRY FORM -->
+<div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
+<h2 class="text-xl font-bold text-stone-800 mb-4 border-b pb-2">පණිවිඩයක් යොමු කරන්න</h2>
+<form class="space-y-4" onsubmit="handleGeneralContact(event)">
+<div>
+<label class="block text-xs font-bold text-stone-700 mb-1">ඔබගේ නම</label>
+<input class="w-full p-2.5 border border-stone-300 rounded-xl text-sm" id="contact-name" placeholder="ඔබගේ නම ඇතුලත් කරන්න" required="" type="text"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-stone-700 mb-1">දුරකථන අංකය</label>
+<input class="w-full p-2.5 border border-stone-300 rounded-xl text-sm" id="contact-phone" placeholder="07XXXXXXXX" required="" type="tel"/>
+</div>
+<div>
+<label class="block text-xs font-bold text-stone-700 mb-1">පණිවිඩය / විමසීම</label>
+<textarea class="w-full p-2.5 border border-stone-300 rounded-xl text-sm" id="contact-msg" placeholder="ඔබට දැනගැනීමට අවශ්‍ය දේ සටහන් කරන්න..." required="" rows="4"></textarea>
+</div>
+<button class="w-full bg-spice-gold hover:bg-spice-red text-white font-bold py-3 rounded-xl shadow transition text-sm" type="submit">
+                                පණිවිඩය WhatsApp මගින් යවන්න
+                            </button>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- MODAL: PRODUCT DETAILS & WEIGHT SELECTOR -->
+<div class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto hidden" id="product-modal">
+<div class="bg-white rounded-3xl max-w-xl w-full shadow-2xl overflow-hidden relative border border-spice-gold/30 my-8 transform transition-all">
+<!-- CLOSE BUTTON -->
+<button class="absolute top-3 right-3 z-10 bg-black/40 hover:bg-black/70 text-white w-9 h-9 rounded-full flex items-center justify-center transition" onclick="closeProductModal()">
+<i class="fa-solid fa-xmark text-lg"></i>
+</button>
+<div class="flex flex-col sm:flex-row">
+<!-- PRODUCT IMAGE PREVIEW -->
+<div class="sm:w-1/2 relative bg-stone-100 h-56 sm:h-auto">
+<img alt="Product Image" class="w-full h-full object-cover" id="modal-img" src="assets/images/cinnamon.jpg"/>
+<span class="absolute top-3 left-3 bg-spice-red text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider" id="modal-badge">Pure Spice</span>
+</div>
+<!-- PRODUCT DETAILS & WEIGHT SELECTOR -->
+<div class="sm:w-1/2 p-5 sm:p-6 flex flex-col justify-between">
+<div>
+<h3 class="text-xl font-extrabold text-stone-900 leading-tight" id="modal-title">කළු ගම්මිරිස් කුඩු (Black Pepper)</h3>
+<p class="text-stone-500 text-xs mt-2 leading-relaxed" id="modal-desc">සුවඳ සහ සැර උපරිමයෙන් සුරැකි පිරිසිදු දේශීය ගම්මිරිස් ඇට වලින් කුඩු කරන ලද්දකි. කෘත්‍රිම එකතු කිරීම් නොමැත.</p>
+<!-- WEIGHT SELECTOR RADIO BUTTONS -->
+<div class="mt-4">
+<label class="block text-xs font-extrabold text-stone-700 uppercase tracking-wider mb-2">පැකට් ප්‍රමාණය තෝරන්න (Select Weight)</label>
+<div class="grid grid-cols-2 gap-2" id="modal-weights-container">
+<button class="p-2.5 rounded-xl border text-xs font-bold transition flex flex-col items-center justify-center border-spice-red bg-spice-red/10 text-spice-red shadow-sm" onclick="selectWeightIndex(0)">
+<span>100g</span>
+<span class="text-[11px] font-black text-stone-900 mt-0.5">Rs. 280</span>
+</button>
+<button class="p-2.5 rounded-xl border text-xs font-bold transition flex flex-col items-center justify-center border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100" onclick="selectWeightIndex(1)">
+<span>250g</span>
+<span class="text-[11px] font-black text-stone-900 mt-0.5">Rs. 680</span>
+</button>
+<button class="p-2.5 rounded-xl border text-xs font-bold transition flex flex-col items-center justify-center border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100" onclick="selectWeightIndex(2)">
+<span>500g</span>
+<span class="text-[11px] font-black text-stone-900 mt-0.5">Rs. 1300</span>
+</button>
+<button class="p-2.5 rounded-xl border text-xs font-bold transition flex flex-col items-center justify-center border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100" onclick="selectWeightIndex(3)">
+<span>1kg (තොග)</span>
+<span class="text-[11px] font-black text-stone-900 mt-0.5">Rs. 2500</span>
+</button>
+</div>
+</div>
+<!-- QUANTITY COUNTER -->
+<div class="mt-4 flex items-center justify-between border-t border-b border-stone-200 py-3">
+<span class="text-xs font-bold text-stone-700">පැකට් ගණන (Quantity):</span>
+<div class="flex items-center gap-2 bg-stone-100 rounded-xl p-1 border border-stone-300">
+<button class="w-8 h-8 bg-white hover:bg-stone-200 text-stone-800 font-bold rounded-lg shadow-sm transition" onclick="updateModalQuantity(-1)">-</button>
+<span class="w-8 text-center font-extrabold text-sm text-stone-900" id="modal-qty-display">1</span>
+<button class="w-8 h-8 bg-white hover:bg-stone-200 text-stone-800 font-bold rounded-lg shadow-sm transition" onclick="updateModalQuantity(1)">+</button>
+</div>
+</div>
+<!-- TOTAL PRICE CALCULATION -->
+<div class="mt-4 bg-amber-50 p-3 rounded-xl border border-amber-200/60 flex items-center justify-between">
+<span class="text-xs font-bold text-stone-600">එකතුව (Total Amount):</span>
+<span class="text-2xl font-black text-spice-red" id="modal-total-price">Rs. 280</span>
+</div>
+</div>
+<!-- ORDER VIA WHATSAPP CTA BUTTON -->
+<div class="mt-5 space-y-2">
+<button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-sm" onclick="submitModalOrderToWhatsApp()">
+<i class="fa-brands fa-whatsapp text-xl"></i>
+<span>WhatsApp හරහා ඇණවුම් කරන්න</span>
+</button>
+<button class="w-full bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold py-2 rounded-xl transition text-xs flex items-center justify-center gap-1" onclick="addToCartFromModal()">
+<i class="fa-solid fa-cart-plus"></i> ඇණවුම් ලැයිස්තුවට එක් කරන්න (Add to Cart)
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL: QUICK CART OVERLAY -->
+<div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex justify-end" id="cart-modal">
+<div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col justify-between p-6 overflow-y-auto">
+<div>
+<div class="flex items-center justify-between border-b pb-4 mb-4">
+<h3 class="text-lg font-bold text-spice-cinnamon flex items-center gap-2">
+<i class="fa-solid fa-cart-shopping text-spice-gold"></i> ඔබේ ඇණවුම් ලැයිස්තුව (Your Cart)
+                    </h3>
+<button class="text-stone-400 hover:text-stone-700 text-xl" onclick="closeCartModal()">
+<i class="fa-solid fa-xmark"></i>
+</button>
+</div>
+<div class="space-y-3" id="cart-items-list">
+<!-- Cart Items Rendered JS -->
+</div>
+<div class="text-center py-12 text-stone-400" id="cart-empty-msg">
+<i class="fa-solid fa-basket-shopping text-4xl mb-2"></i>
+<p class="text-xs">තවමත් කිසිදු අයිතමයක් එකතු කර නොමැත.</p>
+</div>
+</div>
+<div class="border-t pt-4 space-y-3">
+<div class="flex justify-between items-center text-sm font-bold">
+<span>මුළු එකතුව (Total):</span>
+<span class="text-xl text-spice-red font-black" id="cart-grand-total">Rs. 0</span>
+</div>
+<button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl shadow text-sm flex items-center justify-center gap-2" onclick="checkoutCartToWhatsApp()">
+<i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp එකට ඇණවුම යවන්න
+                </button>
+</div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="bg-stone-900 text-stone-400 text-xs py-12 border-t border-stone-800">
+<div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+<div>
+<span class="text-xl font-black text-white block mb-2">KDJ <span class="text-spice-gold">Kudu</span></span>
+<p class="text-stone-400 leading-relaxed mb-4">
+                    100% ස්වාභාවික, ගම්පහින් නිපදවන පිරිසිදු දේශීය කුළුබඩු. තොග සහ සිල්ලර ඇණවුම් සඳහා අදම WhatsApp මගින් සම්බන්ධ වන්න.
+                </p>
+<div class="flex gap-3 text-base text-stone-300">
+<a class="w-8 h-8 rounded-full bg-stone-800 flex items-center justify-center hover:bg-spice-gold hover:text-stone-900 transition" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+<a class="w-8 h-8 rounded-full bg-stone-800 flex items-center justify-center hover:bg-emerald-600 hover:text-white transition" href="https://wa.me/94771234567" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+<a class="w-8 h-8 rounded-full bg-stone-800 flex items-center justify-center hover:bg-spice-red hover:text-white transition" href="#"><i class="fa-brands fa-instagram"></i></a>
+</div>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm mb-3 border-b border-stone-800 pb-1">ඉක්මන් පිවිසුම් (Navigation)</h4>
+<ul class="space-y-2">
+<li><a class="hover:text-amber-400 transition" href="#home" onclick="navigateTo('home')">මුල් පිටුව (Home)</a></li>
+<li><a class="hover:text-amber-400 transition" href="#products" onclick="navigateTo('products')">නිෂ්පාදන ලැයිස්තුව (Products)</a></li>
+<li><a class="hover:text-amber-400 transition" href="#wholesale" onclick="navigateTo('wholesale')">තොග ඇණවුම් (Wholesale)</a></li>
+<li><a class="hover:text-amber-400 transition" href="#about" onclick="navigateTo('about')">අප ගැන (About Us)</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm mb-3 border-b border-stone-800 pb-1">අපගේ ප්‍රධාන කුළුබඩු</h4>
+<ul class="space-y-2">
+<li>කුරුඳු කුඩු (Ceylon Cinnamon)</li>
+<li>කළු ගම්මිරිස් කුඩු (Black Pepper)</li>
+<li>මිරිස් කුඩු &amp; කෑලි මිරිස් (Chilli Powder)</li>
+<li>පිරිසිදු කහ කුඩු (Pure Turmeric)</li>
+<li>බැදපු සහ අමු තුනපහ (Curry Powder)</li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold text-sm mb-3 border-b border-stone-800 pb-1">ස්ථානය &amp; සම්බන්ධතාවය</h4>
+<p class="mb-2"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> ප්‍රධාන පාර, ගම්පහ නගරය</p>
+<p class="mb-2"><i class="fa-solid fa-phone text-amber-400 mr-1"></i> +94 77 123 4567</p>
+<p><i class="fa-solid fa-clock text-amber-400 mr-1"></i> පෙ.ව 8.00 - ප.ව 6.00 (සඳුදා - සෙන)</p>
+</div>
+</div>
+<div class="container mx-auto px-4 border-t border-stone-800 pt-6 text-center text-[11px] text-stone-500 flex flex-col sm:flex-row items-center justify-between gap-2">
+<div>© 2026 KDJ Kudu (දේශීය කුළුබඩු - ගම්පහ). All Rights Reserved.</div>
+<div>Official Website &amp; WhatsApp Direct Ordering System</div>
+</div>
+</footer>
+<script>
+        /* ==========================================================================
+           PRODUCT DATA MODEL (VANILLA JS OBJECT ARRAY)
+           ========================================================================== */
+        const productsData = [
+            {
+                id: "cinnamon-powder",
+                name: "කුරුඳු කුඩු (Pure Ceylon Cinnamon)",
+                category: "cinnamon",
+                description: "උසස්ම තත්ත්වයේ සැබෑ ලංකා කුරුඳු පොතු (Ceylon Cinnamon) වලින් නිපදවන ලද 100% පිරිසිදු කුරුඳු කුඩු.",
+                image: "assets/images/cinnamon.jpg",
+                badge: "Top Seller",
+                weights: [
+                    { label: "100g", price: 350 },
+                    { label: "250g", price: 820 },
+                    { label: "500g", price: 1600 },
+                    { label: "1kg (තොග)", price: 3100 }
+                ]
+            },
+            {
+                id: "black-pepper",
+                name: "කළු ගම්මිරිස් කුඩු (Black Pepper)",
+                category: "pepper",
+                description: "සුවඳ සහ සැර උපරිමයෙන් සුරැකි පිරිසිදු දේශීය ගම්මිරිස් ඇට වලින් කුඩු කරන ලද්දකි. කෘත්‍රිම එකතු කිරීම් නොමැත.",
+                image: "assets/images/black-pepper.jpg",
+                badge: "Pure Spice",
+                weights: [
+                    { label: "100g", price: 280 },
+                    { label: "250g", price: 680 },
+                    { label: "500g", price: 1300 },
+                    { label: "1kg (තොග)", price: 2500 }
+                ]
+            },
+            {
+                id: "chilli-powder",
+                name: "මිරිස් කුඩු (Pure Chilli Powder)",
+                category: "chilli",
+                description: "ගුණාත්මක වියලි මිරිස් කරල් තෝරා සකස් කළ ස්වාභාවික මිරිස් කුඩු. කෘත්‍රිම වර්ණක හෝ සායම් රහිතයි.",
+                image: "assets/images/chilli-powder.jpg",
+                badge: "Hot & Fresh",
+                weights: [
+                    { label: "100g", price: 220 },
+                    { label: "250g", price: 520 },
+                    { label: "500g", price: 1000 },
+                    { label: "1kg (තොග)", price: 1950 }
+                ]
+            },
+            {
+                id: "turmeric-powder",
+                name: "කහ කුඩු (Pure Turmeric Powder)",
+                category: "turmeric",
+                description: "100% දේශීය පිරිසිදු අමු කහ තම්බා, වේලා සකස් කරන ලද උසස් තත්ත්වයේ ස්වාභාවික කහ කුඩු.",
+                image: "assets/images/turmeric.jpg",
+                badge: "100% Organic",
+                weights: [
+                    { label: "50g", price: 140 },
+                    { label: "100g", price: 260 },
+                    { label: "250g", price: 620 },
+                    { label: "1kg (තොග)", price: 2300 }
+                ]
+            },
+            {
+                id: "curry-powder",
+                name: "අමු තුනපහ කුඩු (Raw Curry Powder)",
+                category: "blends",
+                description: "කොත්තමල්ලි, සීරම්, මාංචි, එනසාල් ඇතුළු ස්වාභාවික ඖෂධීය ද්‍රව්‍ය සූපවේදී ක්‍රමයට අඹරන ලද තුනපහ.",
+                image: "assets/images/raw-curry.jpg",
+                badge: "Aromatic",
+                weights: [
+                    { label: "100g", price: 210 },
+                    { label: "250g", price: 500 },
+                    { label: "500g", price: 980 },
+                    { label: "1kg (තොග)", price: 1900 }
+                ]
+            },
+            {
+                id: "roasted-curry",
+                name: "බැදපු තුනපහ කුඩු (Roasted Curry Powder)",
+                category: "blends",
+                description: "මස්, මාළු සහ විශේෂ ව්‍යංජන සුවඳවත් කරගැනීමට පදමට බදින ලද සාම්ප්‍රදායික බැදපු තුනපහ කුඩු.",
+                image: "assets/images/roasted-curry.jpg",
+                badge: "Rich Flavor",
+                weights: [
+                    { label: "100g", price: 240 },
+                    { label: "250g", price: 560 },
+                    { label: "500g", price: 1100 },
+                    { label: "1kg (තොග)", price: 2100 }
+                ]
+            },
+            {
+                id: "chilli-pieces",
+                name: "කෑලි මිරිස් (Chilli Flakes)",
+                category: "chilli",
+                description: "උසස්ම තත්ත්වයේ වියළි මිරිස් කරල් පදමට කැබලි කරන ලද, සුවඳ සහ සැර පිරිපුන් කෑලි මිරිස්.",
+                image: "assets/images/chilli-flakes.jpg",
+                badge: "Coarse Ground",
+                weights: [
+                    { label: "100g", price: 230 },
+                    { label: "250g", price: 540 },
+                    { label: "500g", price: 1050 },
+                    { label: "1kg (තොග)", price: 2000 }
+                ]
+            },
+            {
+                id: "goraka-paste",
+                name: "ගොරකා සහ එනසාල් (Goraka & Cardamom)",
+                category: "blends",
+                description: "පිරිසිදු කළු ගොරකා සහ උසස් තත්ත්වයේ ලංකා එනසාල් / කරාබුනැටි විශේෂිත තොග ඇණවුම්.",
+                image: "assets/images/goraka-cardamom.jpg",
+                badge: "Whole Spices",
+                weights: [
+                    { label: "100g", price: 300 },
+                    { label: "250g", price: 700 },
+                    { label: "500g", price: 1350 },
+                    { label: "1kg (තොග)", price: 2600 }
+                ]
+            }
+        ];
+
+        /* APP STATE */
+        let activeCategory = 'all';
+        let searchQuery = '';
+        let currentModalProduct = null;
+        let selectedWeightIndex = 0;
+        let selectedModalQuantity = 1;
+        let cartState = [];
+
+        /* APP INITIALIZATION */
+        window.addEventListener('DOMContentLoaded', () => {
+            renderFeaturedHomeProducts();
+            renderCatalogProducts();
+            calculateWholesaleEstimate();
+            updateCartBadge();
+        });
+
+        /* CLIENT-SIDE ROUTER */
+        function navigateTo(pageId) {
+            const routes = {home:'index.html', products:'products.html', wholesale:'wholesale.html', about:'about.html', contact:'contact.html'};
+            window.location.href = routes[pageId] || 'index.html';
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        /* RENDER FEATURED PRODUCTS ON HOME PAGE */
+        function renderFeaturedHomeProducts() {
+            const grid = document.getElementById('home-featured-grid');
+            if (!grid) return;
+
+            const featured = productsData.slice(0, 4);
+            grid.innerHTML = featured.map(prod => createProductCardHTML(prod)).join('');
+        }
+
+        /* RENDER FULL CATALOG PRODUCTS */
+        function renderCatalogProducts() {
+            const grid = document.getElementById('catalog-products-grid');
+            const noMsg = document.getElementById('no-products-msg');
+            if (!grid) return;
+
+            const filtered = productsData.filter(item => {
+                const matchesCat = (activeCategory === 'all') || (item.category === activeCategory);
+                const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                      item.description.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                noMsg.classList.remove('hidden');
+            } else {
+                noMsg.classList.add('hidden');
+                grid.innerHTML = filtered.map(prod => createProductCardHTML(prod)).join('');
+            }
+        }
+
+        /* CREATE PRODUCT CARD HTML TEMPLATE */
+        function createProductCardHTML(product) {
+            const minPrice = product.weights[0].price;
+            return `
+                <div class="bg-white rounded-2xl border border-stone-200 shadow-sm hover:shadow-xl transition transform hover:-translate-y-1 overflow-hidden flex flex-col justify-between group">
+                    <div>
+                        <div class="relative h-48 overflow-hidden bg-stone-100">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-3 left-3 bg-spice-cinnamon text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider shadow">
+                                ${product.badge}
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-extrabold text-stone-900 text-base leading-snug group-hover:text-spice-red transition">${product.name}</h3>
+                            <p class="text-stone-500 text-xs mt-1 line-clamp-2 leading-relaxed">${product.description}</p>
+                            
+                            <div class="mt-4 flex items-baseline justify-between">
+                                <span class="text-[11px] text-stone-400">ආරම්භක මිල:</span>
+                                <span class="text-lg font-black text-spice-red">Rs. ${minPrice} <span class="text-[10px] text-stone-500 font-normal">/ ${product.weights[0].label}</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0">
+                        <button onclick="openProductModal('${product.id}')" class="w-full bg-spice-gold hover:bg-spice-red text-white font-bold py-2.5 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow">
+                            <i class="fa-solid fa-eye"></i> විස්තර බලන්න & ඇණවුම් කරන්න
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        /* SEARCH & FILTER LOGIC */
+        function setCategoryFilter(category) {
+            activeCategory = category;
+            
+            // Update active category tab style
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-spice-cinnamon', 'text-white');
+                btn.classList.add('bg-stone-100', 'text-stone-700');
+            });
+            event.currentTarget.classList.remove('bg-stone-100', 'text-stone-700');
+            event.currentTarget.classList.add('bg-spice-cinnamon', 'text-white');
+
+            renderCatalogProducts();
+        }
+
+        function filterProducts() {
+            searchQuery = document.getElementById('product-search').value;
+            renderCatalogProducts();
+        }
+
+        /* PRODUCT MODAL LOGIC & LIVE PRICE CALCULATOR */
+        function openProductModal(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if (!product) return;
+
+            currentModalProduct = product;
+            selectedWeightIndex = 0;
+            selectedModalQuantity = 1;
+
+            document.getElementById('modal-title').innerText = product.name;
+            document.getElementById('modal-desc').innerText = product.description;
+            document.getElementById('modal-img').src = product.image;
+            document.getElementById('modal-badge').innerText = product.badge;
+
+            renderModalWeights();
+            updateModalPriceDisplay();
+
+            document.getElementById('product-modal').classList.remove('hidden');
+        }
+
+        function closeProductModal() {
+            document.getElementById('product-modal').classList.add('hidden');
+        }
+
+        function renderModalWeights() {
+            const container = document.getElementById('modal-weights-container');
+            container.innerHTML = currentModalProduct.weights.map((w, index) => {
+                const isSelected = index === selectedWeightIndex;
+                return `
+                    <button onclick="selectWeightIndex(${index})" class="p-2.5 rounded-xl border text-xs font-bold transition flex flex-col items-center justify-center ${
+                        isSelected 
+                        ? 'border-spice-red bg-spice-red/10 text-spice-red shadow-sm' 
+                        : 'border-stone-200 bg-stone-50 text-stone-700 hover:bg-stone-100'
+                    }">
+                        <span>${w.label}</span>
+                        <span class="text-[11px] font-black text-stone-900 mt-0.5">Rs. ${w.price}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function selectWeightIndex(index) {
+            selectedWeightIndex = index;
+            renderModalWeights();
+            updateModalPriceDisplay();
+        }
+
+        function updateModalQuantity(delta) {
+            selectedModalQuantity = Math.max(1, selectedModalQuantity + delta);
+            document.getElementById('modal-qty-display').innerText = selectedModalQuantity;
+            updateModalPriceDisplay();
+        }
+
+        function updateModalPriceDisplay() {
+            if (!currentModalProduct) return;
+            const unitPrice = currentModalProduct.weights[selectedWeightIndex].price;
+            const total = unitPrice * selectedModalQuantity;
+            document.getElementById('modal-total-price').innerText = `Rs. ${total.toLocaleString()}`;
+        }
+
+        /* WHATSAPP MESSAGE FORMATTING & GENERATION */
+        function submitModalOrderToWhatsApp() {
+            if (!currentModalProduct) return;
+
+            const selectedWeight = currentModalProduct.weights[selectedWeightIndex];
+            const totalPrice = selectedWeight.price * selectedModalQuantity;
+
+            // Formatted Sinhala + English Direct WhatsApp Message Payload
+            const messageText = 
+`ආයුබෝවන් KDJ Kudu! 🌿
+මට පහත සඳහන් කුළුබඩු ඇණවුම ලබාදීමට අවශ්‍යයි:
+
+📦 නිෂ්පාදනය: ${currentModalProduct.name}
+⚖️ පැකට් ප්‍රමාණය: ${selectedWeight.label}
+🔢 පැකට් ගණන: ${selectedModalQuantity}
+💰 මුළු මුදල: Rs. ${totalPrice.toLocaleString()}
+
+📍 කරුණාකර ඇණවුම තහවුරු කිරීමට සහ බෙදාහැරීමේ විස්තර දැනුම් දෙන්න. ස්තුතියි!`;
+
+            const encodedMsg = encodeURIComponent(messageText);
+            const whatsappUrl = `https://wa.me/94771234567?text=${encodedMsg}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+
+        /* CART & MULTI-ITEM CHECKOUT SYSTEM */
+        function addToCartFromModal() {
+            if (!currentModalProduct) return;
+            const weightObj = currentModalProduct.weights[selectedWeightIndex];
+
+            cartState.push({
+                id: currentModalProduct.id,
+                name: currentModalProduct.name,
+                weight: weightObj.label,
+                unitPrice: weightObj.price,
+                qty: selectedModalQuantity,
+                total: weightObj.price * selectedModalQuantity
+            });
+
+            updateCartBadge();
+            closeProductModal();
+            openCartModal();
+        }
+
+        function updateCartBadge() {
+            const badge = document.getElementById('cart-count-badge');
+            if (badge) badge.innerText = cartState.length;
+        }
+
+        function openCartModal() {
+            renderCartItems();
+            document.getElementById('cart-modal').classList.remove('hidden');
+        }
+
+        function closeCartModal() {
+            document.getElementById('cart-modal').classList.add('hidden');
+        }
+
+        function renderCartItems() {
+            const list = document.getElementById('cart-items-list');
+            const emptyMsg = document.getElementById('cart-empty-msg');
+            const grandTotalEl = document.getElementById('cart-grand-total');
+
+            if (cartState.length === 0) {
+                list.innerHTML = '';
+                emptyMsg.classList.remove('hidden');
+                grandTotalEl.innerText = 'Rs. 0';
+                return;
+            }
+
+            emptyMsg.classList.add('hidden');
+            let grandTotal = 0;
+
+            list.innerHTML = cartState.map((item, index) => {
+                grandTotal += item.total;
+                return `
+                    <div class="flex items-center justify-between p-3 bg-stone-50 rounded-xl border border-stone-200">
+                        <div>
+                            <strong class="text-xs text-stone-900 block">${item.name}</strong>
+                            <span class="text-[11px] text-stone-500">${item.weight} x ${item.qty} පැකට්</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="font-extrabold text-xs text-spice-red">Rs. ${item.total}</span>
+                            <button onclick="removeCartItem(${index})" class="text-stone-400 hover:text-red-600 text-xs">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            grandTotalEl.innerText = `Rs. ${grandTotal.toLocaleString()}`;
+        }
+
+        function removeCartItem(index) {
+            cartState.splice(index, 1);
+            updateCartBadge();
+            renderCartItems();
+        }
+
+        function checkoutCartToWhatsApp() {
+            if (cartState.length === 0) return;
+
+            let itemsListText = '';
+            let grandTotal = 0;
+
+            cartState.forEach((item, idx) => {
+                grandTotal += item.total;
+                itemsListText += `${idx + 1}. ${item.name} (${item.weight}) x ${item.qty} = Rs. ${item.total}\n`;
+            });
+
+            const cartMsg = 
+`ආයුබෝවන් KDJ Kudu! 🌿
+මට පහත කුළුබඩු ඇණවුම් ලැයිස්තුව (Cart Order) ලබාදීමට අවශ්‍යයි:
+
+${itemsListText}
+💰 මුළු එකතුව: Rs. ${grandTotal.toLocaleString()}
+
+📍 කරුණාකර ඇණවුම තහවුරු කිරීමට සම්බන්ධ වන්න. ස්තුතියි!`;
+
+            const encoded = encodeURIComponent(cartMsg);
+            window.open(`https://wa.me/94771234567?text=${encoded}`, '_blank');
+        }
+
+        /* WHOLESALE ESTIMATOR & FORM LOGIC */
+        function calculateWholesaleEstimate() {
+            const select = document.getElementById('wholesale-item-select');
+            const qtyRange = document.getElementById('wholesale-qty-range');
+            const qtyVal = document.getElementById('wholesale-qty-val');
+            const totalDisplay = document.getElementById('wholesale-total-price');
+
+            if (!select || !qtyRange) return;
+
+            const unitPrice = parseFloat(select.options[select.selectedIndex].getAttribute('data-price'));
+            const qty = parseInt(qtyRange.value);
+
+            qtyVal.innerText = `${qty} Kg`;
+            const total = unitPrice * qty;
+            totalDisplay.innerText = `Rs. ${total.toLocaleString()}`;
+        }
+
+        function sendWholesaleWhatsApp() {
+            const select = document.getElementById('wholesale-item-select');
+            const qtyRange = document.getElementById('wholesale-qty-range');
+            const itemText = select.options[select.selectedIndex].text;
+            const qty = qtyRange.value;
+
+            const msg = `ආයුබෝවන් KDJ Kudu! මට පහත තොග ඇණවුම (Wholesale Bulk) පිළිබඳ මිල ගණන් ලබාගැනීමට අවශ්‍යයි:\n\n🍃 නිෂ්පාදනය: ${itemText}\n⚖️ ප්‍රමාණය: ${qty} Kg\n\nකරුණාකර තොග මිල ගණන් තහවුරු කරන්න.`;
+            window.open(`https://wa.me/94771234567?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function handleWholesaleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('ws-name').value;
+            const phone = document.getElementById('ws-phone').value;
+            const location = document.getElementById('ws-location').value;
+            const details = document.getElementById('ws-details').value;
+
+            const msg = `ආයුබෝවන් KDJ Kudu! මම තොග ඇණවුම් විමසීමක් සිදු කිරීමට කැමැත්තෙමි:\n\n👤 නම: ${name}\n📞 දුරකථනය: ${phone}\n📍 ස්ථානය: ${location}\n📝 විස්තර: ${details}`;
+            window.open(`https://wa.me/94771234567?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function handleGeneralContact(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const phone = document.getElementById('contact-phone').value;
+            const msgText = document.getElementById('contact-msg').value;
+
+            const msg = `ආයුබෝවන් KDJ Kudu! (Contact Form Message)\n\n👤 නම: ${name}\n📞 දුරකථනය: ${phone}\n✉️ පණිවිඩය: ${msgText}`;
+            window.open(`https://wa.me/94771234567?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        /* ZIP DOWNLOAD EXPORT FEATURE */
+        function downloadProjectZip() {
+            const zip = new JSZip();
+            
+            // Get current entire DOM HTML source code
+            const currentHtmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            
+            // Add to zip structure
+            zip.file("index.html", currentHtmlContent);
+            zip.file("README.txt", "KDJ Kudu Website Source Code Bundle.\nGenerated for Offline deployment or hosting on Netlify/Vercel/GitHub Pages.");
+
+            zip.generateAsync({ type: "blob" }).then(function(content) {
+                saveAs(content, "KDJ_Kudu_Website_Code.zip");
+            });
+        }
+    </script>
+</body></html>
